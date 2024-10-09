@@ -8,65 +8,42 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class HtmlParser {
 
-    public void extractProductDetails(String html) {
-        try {
-            Document doc = Jsoup.parse(html);
+    //task 3
+    public Product parseProductDetails(Element productElement) {
+        String title = validateString(productElement.select(".title a[title]").attr("title"));
+        String productLink = validateString(productElement.select(".title a[title]").attr("href"));
+        String oldPrice = validatePrice(productElement.select(".last-price").text());
 
-            Elements products = doc.select(".card.card-product");
-//            System.out.println("Number of products: " + products.html());
-            for (Element product : products) {
-                String title = product.select(".title a[title]").attr("title");
-
-                String productLink = product.select(".title a[title]").attr("href");
-
-                String oldPrice = product.select(".last-price").text();
-
-                Element newPriceElement = product.select(".price-new").first();
-                String newPrice = "";
-                String currency = "";
-
-                if (newPriceElement != null) {
-                    String priceValue = newPriceElement.select("b").text();
-                    currency = newPriceElement.ownText();
-                    newPrice = priceValue + " " + currency.trim();
-                }
-                System.out.println("Product Title: " + title);
-                System.out.println("Product Link: " + productLink);
-                System.out.println("Old Price: " + (oldPrice.isEmpty() ? "No old price" : oldPrice));
-                System.out.println("New Price: " + newPrice);
-                System.out.println("--------------------------------");
-                extractAdditionalProductData(productLink);
-
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        Element newPriceElement = productElement.select(".price-new").first();
+        String newPrice = "";
+        if (newPriceElement != null) {
+            String priceValue = validatePrice(newPriceElement.select("b").text());
+            String currency = newPriceElement.ownText();
+            newPrice = priceValue + " " + currency.trim();
         }
+
+        return new Product(title, productLink, oldPrice, newPrice, fetchAdditionalProductData(productLink));
     }
 
-    public void extractAdditionalProductData(String productUrl) {
+    //task 4
+    public Map<String, String> fetchAdditionalProductData(String productUrl) {
         try {
             Document productPage = Jsoup.connect(productUrl).get();
-
             Elements specifications = productPage.select("ul.features li.char_all");
 
-            Map<String, String> specs = processProductSpecifications(specifications);
-
-            System.out.println("Product Specifications:");
-            specs.forEach((key, value) -> System.out.println(key + ": " + value));
-            System.out.println("================================");
+            return processProductSpecifications(specifications);
         } catch (IOException e) {
             System.err.println("Error fetching product page: " + productUrl);
             e.printStackTrace();
         }
+        return null;
     }
 
-    public Map<String, String> processProductSpecifications(Elements specifications) {
+    private Map<String, String> processProductSpecifications(Elements specifications) {
         Map<String, String> specsMap = new LinkedHashMap<>();
 
         for (Element spec : specifications) {
@@ -80,4 +57,22 @@ public class HtmlParser {
 
         return specsMap;
     }
+
+    //task 5
+    private String validateString(String input) {
+        if (input != null && !input.isEmpty()) {
+            return input.trim(); //rm whitespaces from start and end
+        }
+        return "Unknown";
+    }
+
+    private String validatePrice(String price) {
+        if (price != null && !price.isEmpty()) {
+            String cleanedPrice = price.replaceAll("[^\\d]", "");
+            return cleanedPrice.isEmpty() ? "0" : cleanedPrice;    }
+        return "0";
+    }
+
+
 }
+

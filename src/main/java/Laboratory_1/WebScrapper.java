@@ -7,13 +7,12 @@ import java.net.URL;
 
 public class WebScrapper {
 
-    public String baseGetRequest() {
+    //task 2
+    public String fetchPageContent(String urlString) {
         try {
-            HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(Constants.URL).openConnection();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(urlString).openConnection();
             httpURLConnection.setRequestMethod("GET");
 
-            int responseCode = httpURLConnection.getResponseCode();
-//            System.out.println("Response code: " + responseCode);
             BufferedReader in = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
@@ -22,10 +21,7 @@ public class WebScrapper {
             }
             in.close();
 
-//            System.out.println(response.toString());
             return response.toString();
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

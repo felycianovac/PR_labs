@@ -1,12 +1,11 @@
 package Laboratory_1;
 
 public class Main {
-
     public static void main(String[] args) {
-        WebScrapper scrapper = new WebScrapper();
-        HtmlParser parser = new HtmlParser();
+        String url = Constants.URL;
+        ProductService productService = new ProductService();
 
-        String htmlContent = scrapper.baseGetRequest();
-
-        parser.extractProductDetails(htmlContent);    }
+        // Scrape and display products
+        productService.scrapeAndDisplayProducts(url);
+    }
 }
