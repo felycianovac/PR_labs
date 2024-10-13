@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="extract product details &amp; extract specifications from link">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="add Product struct + reformat classes + add 2 validation methods">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ExchangeRateParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/ValidationUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/HtmlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/HtmlParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Constants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/HtmlParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/WebScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/WebScrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/WebScrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/WebFetcher.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "D:/UTM/5_th_semester/pr/PR_labs",
@@ -95,7 +97,7 @@
       <module name="PR_labs" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Laboratory_1.*" />
+          <option name="PATTERN" value="Laboratory_1.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,6 +121,10 @@
       <updated>1728419322120</updated>
       <workItem from="1728419323127" duration="4712000" />
       <workItem from="1728498052750" duration="3011000" />
+      <workItem from="1728644214212" duration="948000" />
+      <workItem from="1728649087123" duration="4555000" />
+      <workItem from="1728819327262" duration="23000" />
+      <workItem from="1728862158271" duration="1639000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -149,6 +155,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="implement the base get request" />

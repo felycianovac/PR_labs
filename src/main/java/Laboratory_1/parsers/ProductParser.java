@@ -1,5 +1,6 @@
-package Laboratory_1;
+package Laboratory_1.parsers;
 
+import Laboratory_1.model.Product;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,8 +10,11 @@ import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static Laboratory_1.utils.ValidationUtils.validatePrice;
+import static Laboratory_1.utils.ValidationUtils.validateString;
 
-public class HtmlParser {
+
+public class ProductParser {
 
     //task 3
     public Product parseProductDetails(Element productElement) {
@@ -34,6 +38,7 @@ public class HtmlParser {
         try {
             Document productPage = Jsoup.connect(productUrl).get();
             Elements specifications = productPage.select("ul.features li.char_all");
+            //select any element that has class "char_all" and is a child of an element with class "features"
 
             return processProductSpecifications(specifications);
         } catch (IOException e) {
@@ -56,21 +61,6 @@ public class HtmlParser {
         }
 
         return specsMap;
-    }
-
-    //task 5
-    private String validateString(String input) {
-        if (input != null && !input.isEmpty()) {
-            return input.trim(); //rm whitespaces from start and end
-        }
-        return "Unknown";
-    }
-
-    private String validatePrice(String price) {
-        if (price != null && !price.isEmpty()) {
-            String cleanedPrice = price.replaceAll("[^\\d]", "");
-            return cleanedPrice.isEmpty() ? "0" : cleanedPrice;    }
-        return "0";
     }
 
 

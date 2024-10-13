@@ -1,4 +1,4 @@
-package Laboratory_1;
+package Laboratory_1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

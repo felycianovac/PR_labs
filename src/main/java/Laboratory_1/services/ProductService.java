@@ -1,5 +1,8 @@
-package Laboratory_1;
+package Laboratory_1.services;
 
+import Laboratory_1.model.Product;
+import Laboratory_1.parsers.ProductParser;
+import Laboratory_1.utils.WebFetcher;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,20 +10,19 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
+import static Laboratory_1.utils.WebFetcher.fetchPageContent;
 
 public class ProductService {
 
-    private WebScrapper webScrapper;
-    private HtmlParser htmlParser;
+    private ProductParser productParser;
 
     public ProductService() {
-        this.webScrapper = new WebScrapper();
-        this.htmlParser = new HtmlParser();
+        this.productParser = new ProductParser();
     }
 
     public void scrapeAndDisplayProducts(String url) {
-        String pageContent = webScrapper.fetchPageContent(url);
+        String pageContent = fetchPageContent(url);
 
         if (pageContent != null) {
             try {
@@ -29,10 +31,10 @@ public class ProductService {
 
                 List<Product> productList = new ArrayList<>();
                 for (Element productElement : products) {
-                    Product product = htmlParser.parseProductDetails(productElement);
+                    Product product = productParser.parseProductDetails(productElement);
 
-                    Map<String, String> specs = htmlParser.fetchAdditionalProductData(product.getLink());
-                    product.setSpecifications(specs);
+//                    Map<String, String> specs = htmlParser.fetchAdditionalProductData(product.getLink());
+//                    product.setSpecifications(specs);
 
                     productList.add(product);
                 }

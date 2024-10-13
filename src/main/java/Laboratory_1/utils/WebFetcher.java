@@ -1,14 +1,14 @@
-package Laboratory_1;
+package Laboratory_1.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class WebScrapper {
+public class WebFetcher {
 
     //task 2
-    public String fetchPageContent(String urlString) {
+    public static String fetchPageContent(String urlString) {
         try {
             HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(urlString).openConnection();
             httpURLConnection.setRequestMethod("GET");

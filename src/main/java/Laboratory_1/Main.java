@@ -1,11 +1,12 @@
 package Laboratory_1;
 
+import Laboratory_1.services.ProductService;
+
 public class Main {
     public static void main(String[] args) {
-        String url = Constants.URL;
+        String url = "https://darwin.md/telefoane";
         ProductService productService = new ProductService();
 
-        // Scrape and display products
         productService.scrapeAndDisplayProducts(url);
     }
 }
