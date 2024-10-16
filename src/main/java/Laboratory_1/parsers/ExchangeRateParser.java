@@ -8,7 +8,7 @@ import org.jsoup.select.Elements;
 
 public class ExchangeRateParser {
 
-    public double getMdlToEurRate() {
+    public static double getEurToMdlRate() {
             String url = "https://www.curs.md/ro";
             String pageContent = WebFetcher.fetchPageContent(url);
 

@@ -8,7 +8,9 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static Laboratory_1.utils.ValidationUtils.validatePrice;
 import static Laboratory_1.utils.ValidationUtils.validateString;
@@ -61,6 +63,15 @@ public class ProductParser {
         }
 
         return specsMap;
+    }
+
+    public List<Product> parseProductsFromPage(String pageContent) throws Exception {
+        Document doc = Jsoup.parse(pageContent);
+        Elements productElements = doc.select(".card.card-product");
+
+        return productElements.stream()
+                .map(this::parseProductDetails)
+                .collect(Collectors.toList());
     }
 
 
