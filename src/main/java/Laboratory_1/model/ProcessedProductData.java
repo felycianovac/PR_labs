@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ProcessedProductData {
     private List<Product> filteredProducts;
-    private double totalSum;
+    private String  totalSum;
     private Instant timestamp;
 
 

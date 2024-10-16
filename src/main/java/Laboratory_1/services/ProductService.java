@@ -22,26 +22,28 @@ public class ProductService {
         this.productParser = new ProductParser();
     }
 
-    public void scrapeProducts(String url) {
+    public List<Product> scrapeProducts(String url) {
         String pageContent = fetchPageContent(url);
-        scrapeAndDisplay(pageContent);
+        return scrapeAndDisplay(pageContent);
     }
 
-    public void scrapeProducts(String host, String path) {
+    public List<Product> scrapeProducts(String host, String path) {
         String pageContent = sendHttpsGetRequestWithHeaders(host, path);
-        scrapeAndDisplay(pageContent);
+        return scrapeAndDisplay(pageContent);
     }
 
-    public void scrapeAndDisplay(String pageContent) {
+    public List<Product> scrapeAndDisplay(String pageContent) {
         if (pageContent != null) {
             try {
                 List<Product> productList =productParser.parseProductsFromPage(pageContent);
                 productList.forEach(System.out::println);
+                return productList;
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+        return null;
     }
 
     public ProcessedProductData processProducts(String url, double minPriceEUR, double maxPriceEUR) {
@@ -54,8 +56,7 @@ public class ProductService {
 //                products.forEach(System.out::println);
                 double eurToMdlRate = getEurToMdlRate();
                 double mdlToEurRate = 1 / eurToMdlRate;
-//                System.out.println("MDL to EUR rate: " + mdlToEurRate);
-//                System.out.println("EUR to MDL rate: " + eurToMdlRate);
+
 
                 List<Product> mappedProducts = products.stream()
                         .map(product -> convertPriceToEUR(product, mdlToEurRate, eurToMdlRate))
@@ -63,23 +64,26 @@ public class ProductService {
 
                 List<Product> filteredProducts = mappedProducts.stream()
                         .filter(product -> {
-                            double priceEUR = Double.parseDouble(product.getNewPrice());
+                            double priceEUR = Double.parseDouble(
+                                    (product.getNewPrice() != null && !product.getNewPrice().isEmpty() ? product.getNewPrice() : product.getOldPrice())
+                                            .replaceAll("[^\\d.]", ""));
                             return priceEUR >= minPriceEUR && priceEUR <= maxPriceEUR;
                         })
                         .collect(Collectors.toList());
 
                 Optional<Double> totalSum = filteredProducts.stream()
-                        .map(product -> Double.parseDouble(product.getNewPrice()))
+                        .map(product -> Double.parseDouble((product.getNewPrice() != null && !product.getNewPrice().isEmpty() ? product.getNewPrice() : product.getOldPrice())
+                                        .replaceAll("[^\\d.]", "")))
                         .reduce(Double::sum);
 
-                return new ProcessedProductData(filteredProducts, totalSum.orElse(0.0), Instant.now());
+                return new ProcessedProductData(filteredProducts, totalSum.orElse(0.0)+" EUR", Instant.now());
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return new ProcessedProductData(null, 0.0, Instant.now());
+        return new ProcessedProductData(null, "0.0 EUR", Instant.now());
     }
 
     private Product convertPriceToEUR(Product product, double mdlToEurRate, double eurToMdlRate) {
@@ -88,9 +92,9 @@ public class ProductService {
             String newCurrency = newPrice.replaceAll("[0-9]", "").trim();
             double newPriceValue = Double.parseDouble(newPrice.replaceAll("[^\\d.]", ""));
             if (newCurrency.equalsIgnoreCase("lei")) {
-                product.setNewPrice(String.valueOf(newPriceValue * mdlToEurRate));
+                product.setNewPrice(String.valueOf(newPriceValue * mdlToEurRate)+" EUR");
             } else if (newCurrency.equalsIgnoreCase("EUR")) {
-                product.setNewPrice(String.valueOf(newPriceValue * eurToMdlRate));
+                product.setNewPrice(String.valueOf(newPriceValue * eurToMdlRate)+" lei");
             }
         }
 
@@ -107,9 +111,4 @@ public class ProductService {
 
         return product;
     }
-
-
-
-
-
 }

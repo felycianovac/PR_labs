@@ -22,13 +22,13 @@ public class ProductParser {
     public Product parseProductDetails(Element productElement) {
         String title = validateString(productElement.select(".title a[title]").attr("title"));
         String productLink = validateString(productElement.select(".title a[title]").attr("href"));
-        String oldPrice = validatePrice(productElement.select(".last-price").text());
+        String oldPrice = validatePrice(productElement.select(".last-price").text()) + " lei";
 
         Element newPriceElement = productElement.select(".price-new").first();
         String newPrice = "";
         if (newPriceElement != null) {
             String priceValue = validatePrice(newPriceElement.select("b").text());
-            String currency = newPriceElement.ownText();
+           String currency = newPriceElement.ownText();
             newPrice = priceValue + " " + currency.trim();
         }
 
