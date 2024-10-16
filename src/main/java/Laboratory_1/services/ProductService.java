@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static Laboratory_1.parsers.ExchangeRateParser.getEurToMdlRate;
+import static Laboratory_1.utils.TCPSocketHTTPClient.sendHttpsGetRequestWithHeaders;
 import static Laboratory_1.utils.WebFetcher.fetchPageContent;
 
 public class ProductService {
@@ -21,9 +22,17 @@ public class ProductService {
         this.productParser = new ProductParser();
     }
 
-    public void scrapeAndDisplayProducts(String url) {
+    public void scrapeProducts(String url) {
         String pageContent = fetchPageContent(url);
+        scrapeAndDisplay(pageContent);
+    }
 
+    public void scrapeProducts(String host, String path) {
+        String pageContent = sendHttpsGetRequestWithHeaders(host, path);
+        scrapeAndDisplay(pageContent);
+    }
+
+    public void scrapeAndDisplay(String pageContent) {
         if (pageContent != null) {
             try {
                 List<Product> productList =productParser.parseProductsFromPage(pageContent);

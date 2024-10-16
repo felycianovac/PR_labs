@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="refactor project struct + add exchange rate extraction from curs.md">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/ProcessedProductData.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="add methods for converting the prices to eur + mapping/filtering/reducing + new ProcessedProductData model">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/TCPSocketHTTPClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ExchangeRateParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ExchangeRateParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +121,7 @@
       <workItem from="1728862158271" duration="2482000" />
       <workItem from="1728937740810" duration="544000" />
       <workItem from="1728995356854" duration="16000" />
-      <workItem from="1729065782951" duration="2258000" />
+      <workItem from="1729065782951" duration="3845000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -157,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728863988616</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add methods for converting the prices to eur + mapping/filtering/reducing + new ProcessedProductData model">
+      <option name="closed" value="true" />
+      <created>1729097065210</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1729097065210</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +185,7 @@
     <MESSAGE value="implement data extraction &amp; product details parsing" />
     <MESSAGE value="extract product details &amp; extract specifications from link" />
     <MESSAGE value="refactor project struct + add exchange rate extraction from curs.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor project struct + add exchange rate extraction from curs.md" />
+    <MESSAGE value="add methods for converting the prices to eur + mapping/filtering/reducing + new ProcessedProductData model" />
+    <option name="LAST_COMMIT_MESSAGE" value="add methods for converting the prices to eur + mapping/filtering/reducing + new ProcessedProductData model" />
   </component>
 </project>
