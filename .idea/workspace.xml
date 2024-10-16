@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="send request via tcp (ssl socket)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/ManualProcessedProductSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/ManualProductSerializer.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="add serialization for both product &amp; processed product data (xml x json)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/CustomSerializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/ProcessedProductData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/ProcessedProductData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +120,7 @@
       <workItem from="1728862158271" duration="2482000" />
       <workItem from="1728937740810" duration="544000" />
       <workItem from="1728995356854" duration="16000" />
-      <workItem from="1729065782951" duration="7553000" />
+      <workItem from="1729065782951" duration="10018000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -174,7 +170,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729102022065</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add serialization for both product &amp; processed product data (xml x json)">
+      <option name="closed" value="true" />
+      <created>1729105742959</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729105742959</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +202,7 @@
     <MESSAGE value="refactor project struct + add exchange rate extraction from curs.md" />
     <MESSAGE value="add methods for converting the prices to eur + mapping/filtering/reducing + new ProcessedProductData model" />
     <MESSAGE value="send request via tcp (ssl socket)" />
-    <option name="LAST_COMMIT_MESSAGE" value="send request via tcp (ssl socket)" />
+    <MESSAGE value="add serialization for both product &amp; processed product data (xml x json)" />
+    <option name="LAST_COMMIT_MESSAGE" value="add serialization for both product &amp; processed product data (xml x json)" />
   </component>
 </project>
