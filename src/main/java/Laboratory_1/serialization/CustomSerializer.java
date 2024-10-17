@@ -1,5 +1,9 @@
 package Laboratory_1.serialization;
 
+import Laboratory_1.model.ProcessedProductData;
+import Laboratory_1.model.Product;
+
+import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -10,7 +14,10 @@ public class CustomSerializer {
 
 
     public static String serialize(Object obj) {
-        if (obj instanceof String) {
+        if (obj == null) {
+            return "null";
+        }
+        else if (obj instanceof String) {
             return "string:" + obj;
         } else if (obj instanceof Integer) {
             return "int:" + obj;
@@ -25,12 +32,19 @@ public class CustomSerializer {
             return serializeList((List<?>) obj);
         } else if (obj instanceof Map) {
             return serializeMap((Map<?, ?>) obj);
-        } else {
+        } else if (obj instanceof Object) {
+            return serializeCustomObject(obj);
+        }
+        else {
             throw new IllegalArgumentException("Unsupported object type for serialization.");
         }
     }
 
+
     public static Object deserialize(String data) {
+        if (data.equals("null")) {
+            return null;
+        } else
         if (data.startsWith("string:")) {
             return data.substring(7);
         } else if (data.startsWith("int:")) {
@@ -51,7 +65,10 @@ public class CustomSerializer {
             return deserializeList(data);
         } else if (data.trim().startsWith("map:{")) {
             return deserializeMap(data);
-        } else {
+        } else if (data.startsWith("object:{")) {
+            return deserializeCustomObject(data);
+        }
+        else {
             throw new IllegalArgumentException("Unsupported data format for deserialization.");
         }
     }
@@ -114,5 +131,58 @@ public class CustomSerializer {
     public static Object deserializeFromBytes(byte[] data) {
         String serializedData = new String(data, StandardCharsets.UTF_8);
         return deserialize(serializedData);
+    }
+
+    private static String serializeCustomObject(Object obj) {
+        StringBuilder sb = new StringBuilder("object:{");
+
+        sb.append("className:").append(obj.getClass().getName()).append(",");
+
+        Field[] fields = obj.getClass().getDeclaredFields();
+        for (int i = 0; i < fields.length; i++) {
+            fields[i].setAccessible(true);
+            try {
+                sb.append(fields[i].getName()).append(":").append(serialize(fields[i].get(obj)));
+                if (i < fields.length - 1) {
+                    sb.append(",");
+                }
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        sb.append("}");
+        return sb.toString();
+    }
+
+    private static Object deserializeCustomObject(String data) {
+        try {
+            String objectContent = data.substring(8, data.length() - 1);
+            String[] fields = objectContent.split(",(?=\\w+:)");
+            Map<String, String> fieldData = new LinkedHashMap<>();
+
+            for (String field : fields) {
+                int colonIndex = field.indexOf(":");
+                String fieldName = field.substring(0, colonIndex);
+                String fieldValue = field.substring(colonIndex + 1);
+                fieldData.put(fieldName, fieldValue);
+            }
+
+            String className = fieldData.get("className");
+            Class<?> clazz = Class.forName(className);
+            Object instance = clazz.getDeclaredConstructor().newInstance();
+
+            for (Field field : clazz.getDeclaredFields()) {
+                field.setAccessible(true);
+                String value = fieldData.get(field.getName());
+                if (value != null) {
+                    field.set(instance, deserialize(value));
+                }
+            }
+
+            return instance;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error deserializing custom object", e);
+        }
     }
 }

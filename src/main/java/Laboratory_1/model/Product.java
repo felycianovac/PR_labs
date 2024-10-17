@@ -2,12 +2,14 @@ package Laboratory_1.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     private String title;
     private String link;
@@ -35,4 +37,16 @@ public class Product {
         sb.append("========================\n");
         return sb.toString();
     }
+
+
+//    @Override
+//    public String toString() {
+//        return "Product{" +
+//                "title='" + title + '\'' +
+//                ", link='" + link + '\'' +
+//                ", oldPrice='" + oldPrice + '\'' +
+//                ", newPrice='" + newPrice + '\'' +
+//                ", specifications=" + specifications +
+//                '}';
+//    }
 }

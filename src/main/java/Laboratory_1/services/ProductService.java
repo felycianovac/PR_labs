@@ -103,9 +103,9 @@ public class ProductService {
             String oldCurrency = oldPrice.replaceAll("[0-9]", "").trim();
             double oldPriceValue = Double.parseDouble(oldPrice.replaceAll("[^\\d.]", ""));
             if (oldCurrency.equalsIgnoreCase("lei")) {
-                product.setOldPrice(String.valueOf(oldPriceValue * mdlToEurRate));
+                product.setOldPrice(String.valueOf(oldPriceValue * mdlToEurRate)+ " EUR");
             } else if (oldCurrency.equalsIgnoreCase("EUR")) {
-                product.setOldPrice(String.valueOf(oldPriceValue * eurToMdlRate));
+                product.setOldPrice(String.valueOf(oldPriceValue * eurToMdlRate)+ " lei");
             }
         }
 
