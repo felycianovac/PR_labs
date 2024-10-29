@@ -21,6 +21,7 @@ public class WebFetcher {
             }
             in.close();
 
+//            System.out.println(response.toString());
             return response.toString();
         } catch (Exception e) {
             e.printStackTrace();

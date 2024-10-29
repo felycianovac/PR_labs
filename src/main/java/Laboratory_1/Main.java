@@ -20,9 +20,11 @@ public class Main {
 
     public static void main(String[] args) {
 //
-        String url = "https://darwin.md/telefoane";
+        String url = "https://darwin.md/telefoane/smartphone";
         //task 6
         ProductService productService = new ProductService();
+        System.out.println(productService.scrapeProducts(url));
+
 //        ProcessedProductData processedProductData = productService.processProducts(url, 100, 1000);
 //        System.out.println(processedProductData);
 
@@ -33,7 +35,7 @@ public class Main {
 //        ManualProductSerializer manualProductSerializer = new ManualProductSerializer();
 //        ManualProcessedProductSerializer manualProcessedProductSerializer = new ManualProcessedProductSerializer();
 
-        List<Product> products = productService.scrapeProducts("darwin.md", "/telefoane");
+//        List<Product> products = productService.scrapeProducts("darwin.md", "/telefoane");
 //
 //        if (products != null && !products.isEmpty()) {
 //            System.out.println("=== Serialized Product List (Before Processing) ===");
@@ -53,10 +55,10 @@ public class Main {
 //        } else {
 //            System.out.println("No products found or scraping failed.");
 //        }
-
-        String serializedProducts = serialize(products);
-        System.out.println(serializedProducts);
-        System.out.println(deserialize(serializedProducts));
+//
+//        String serializedProducts = serialize(products);
+//        System.out.println(serializedProducts);
+//        System.out.println(deserialize(serializedProducts));
     }
 
 }

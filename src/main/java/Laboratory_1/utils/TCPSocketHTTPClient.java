@@ -14,7 +14,9 @@ public class TCPSocketHTTPClient {
         StringBuilder response = new StringBuilder();
 
         try (SSLSocket socket = (SSLSocket) SSLSocketFactory.getDefault().createSocket(host, 443);
+             //secure connection to the server using TLS
              PrintWriter writer = new PrintWriter(socket.getOutputStream());
+             //send data (HTTP request) over the socket's output stream
              BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 
             writer.println("GET " + path + " HTTP/1.1");
