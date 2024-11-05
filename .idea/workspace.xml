@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement basic web socket config &amp; simple chat room logic">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="dockerize database &amp; app">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/shared_data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Dockerfile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -75,7 +74,7 @@
       <recent name="D:\UTM\5_th_semester\pr\PR_labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
+  <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -164,7 +163,7 @@
       <workItem from="1730013851054" duration="223000" />
       <workItem from="1730232454547" duration="2275000" />
       <workItem from="1730663234379" duration="5350000" />
-      <workItem from="1730801875962" duration="15373000" />
+      <workItem from="1730801875962" duration="18780000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -286,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730811808082</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="dockerize database &amp; app">
+      <option name="closed" value="true" />
+      <created>1730817666005</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1730817666005</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +326,7 @@
     <MESSAGE value="implement pagination + fix some http methods" />
     <MESSAGE value="implement reading product &amp; saving from a json file" />
     <MESSAGE value="implement basic web socket config &amp; simple chat room logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement basic web socket config &amp; simple chat room logic" />
+    <MESSAGE value="dockerize database &amp; app" />
+    <option name="LAST_COMMIT_MESSAGE" value="dockerize database &amp; app" />
   </component>
 </project>
