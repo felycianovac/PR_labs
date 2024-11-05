@@ -34,5 +34,12 @@ public class ProductEntity {
 //    @JsonManagedReference
     private Set<ProductSpecification> productSpecifications;
 
+    public void addProductSpecification(ProductSpecification productSpecification) {
+        if (productSpecifications == null) {
+            productSpecifications = new HashSet<>();
+        }
+        productSpecifications.add(productSpecification);
+    }
+
 
 }

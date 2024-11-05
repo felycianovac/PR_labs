@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement basic crud operations for specifications &amp; product">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/Specification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +70,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -168,6 +159,7 @@
       <workItem from="1730013851054" duration="223000" />
       <workItem from="1730232454547" duration="2275000" />
       <workItem from="1730663234379" duration="5350000" />
+      <workItem from="1730801875962" duration="3183000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -249,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730661951798</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="implement basic crud operations for specifications &amp; product">
+      <option name="closed" value="true" />
+      <created>1730801929175</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1730801929175</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +277,7 @@
     <MESSAGE value="install docker" />
     <MESSAGE value="implement object serialization" />
     <MESSAGE value="initialize spring boot app &amp; database entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="initialize spring boot app &amp; database entities" />
+    <MESSAGE value="implement basic crud operations for specifications &amp; product" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement basic crud operations for specifications &amp; product" />
   </component>
 </project>

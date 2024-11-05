@@ -1,14 +1,10 @@
 package Laboratory_2.product;
 
-import Laboratory_1.Main;
-import Laboratory_2.product_specification.ProductSpecification;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/products")
@@ -18,9 +14,7 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/create")
-    public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductDTO product) {
-
-
+    public ResponseEntity<ProductResponse> createProduct(@RequestBody ProductRequest product) {
         return ResponseEntity.ok(productService.createProduct(product));
     }
 

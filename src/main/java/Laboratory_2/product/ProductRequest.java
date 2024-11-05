@@ -2,9 +2,7 @@ package Laboratory_2.product;
 
 import lombok.*;
 
-import Laboratory_2.product_specification.ProductSpecification;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 
 @Getter
@@ -12,7 +10,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductRequest {
     private String title;
     private String link;
     private String oldPrice;

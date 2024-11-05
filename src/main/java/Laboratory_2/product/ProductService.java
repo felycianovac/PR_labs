@@ -2,6 +2,7 @@ package Laboratory_2.product;
 
 
 import Laboratory_2.product_specification.ProductSpecification;
+import Laboratory_2.product_specification.ProductSpecificationDTO;
 import Laboratory_2.product_specification.ProductSpecificationRepository;
 import Laboratory_2.specification.SpecificationRepository;
 import Laboratory_2.specification.Specification;
@@ -12,8 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -28,7 +31,7 @@ public class ProductService {
     private ProductSpecificationRepository productSpecificationRepository;
 
     @Transactional
-    public ProductEntity createProduct(ProductDTO productDTO) {
+    public ProductResponse createProduct(ProductRequest productDTO) {
         ProductEntity productEntity = ProductEntity.builder()
                 .title(productDTO.getTitle())
                 .link(productDTO.getLink())
@@ -38,33 +41,38 @@ public class ProductService {
 
         ProductEntity savedProduct = productRepository.save(productEntity);
 
-        Map<String, String> specificationsData = productDTO.getSpecifications();
-        specificationsData.forEach((specKey, specValue) -> {
-            Specification specification = specificationRepository.findByType(specKey)
-                    .orElseGet(() -> {
-                        Specification newSpec = Specification.builder()
-                                .type(specKey)
-                                .build();
-                        Specification savedSpec = specificationRepository.save(newSpec);
-                        return savedSpec;
-                    });
+        List<ProductSpecification> productSpecificationList = productDTO.getSpecifications().entrySet().stream()
+                .map(entry -> {
+                    String specKey = entry.getKey();
+                    String specValue = entry.getValue();
 
-            ProductSpecification productSpec = ProductSpecification.builder()
-                    .product(savedProduct)
-                    .specification(specification)
-                    .value(specValue)
-                    .build();
-            System.out.println(productSpec);
-            productSpecificationRepository.save(productSpec);
-        });
+                    Specification specification = specificationRepository.findByType(specKey)
+                            .orElseGet(() -> {
+                                Specification newSpec = new Specification();
+                                newSpec.setType(specKey);
+                                return specificationRepository.save(newSpec);
+                            });
 
+                    return ProductSpecification.builder()
+                            .product(savedProduct)
+                            .specification(specification)
+                            .value(specValue)
+                            .build();
+                })
+                .collect(Collectors.toList());
 
-        savedProduct.builder()
-                .productSpecifications(productSpecificationRepository.findAllByProduct(savedProduct))
-                .build();
+        productSpecificationRepository.saveAll(productSpecificationList);
 
-        return savedProduct;
+        List<ProductSpecificationDTO> specificationDTOs = productSpecificationRepository.findByProductId(savedProduct.getId()).stream()
+                .map(ProductSpecificationDTO::from )
+                .collect(Collectors.toList());
+
+        System.out.println("ProductResponse.fromEntity(savedProduct, specificationDTOs): " + ProductResponse.fromEntity(savedProduct, specificationDTOs));
+        return ProductResponse.fromEntity(savedProduct, specificationDTOs);
     }
+
+
+
 
 
     public Optional<ProductEntity> getProductById(Integer id) {
