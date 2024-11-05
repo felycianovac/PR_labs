@@ -7,12 +7,15 @@ import Laboratory_2.product_specification.ProductSpecificationRepository;
 import Laboratory_2.specification.SpecificationRepository;
 import Laboratory_2.specification.Specification;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -123,6 +126,52 @@ public class ProductService {
         productRepository.delete(product);
 
         return "Product and related specifications deleted successfully.";
+    }
+
+
+    public ProductDTO saveProductFromJsonFile(String filePath) {
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            ProductRequest productRequest = mapper.readValue(new File(filePath), ProductRequest.class);
+
+            ProductEntity productEntity = new ProductEntity();
+            productEntity.setTitle(productRequest.getTitle());
+            productEntity.setLink(productRequest.getLink());
+            productEntity.setOldPrice(productRequest.getOldPrice());
+            productEntity.setNewPrice(productRequest.getNewPrice());
+
+            ProductEntity savedProduct = productRepository.save(productEntity);
+
+            List<ProductSpecification> productSpecifications = productRequest.getSpecifications().entrySet().stream()
+                    .map(entry -> {
+                        Specification specification = specificationRepository.findByType(entry.getKey())
+                                .orElseGet(() -> {
+                                    Specification newSpec = new Specification();
+                                    newSpec.setType(entry.getKey());
+                                    return specificationRepository.save(newSpec);
+                                });
+
+                        return ProductSpecification.builder()
+                                .product(savedProduct)
+                                .specification(specification)
+                                .value(entry.getValue())
+                                .build();
+                    })
+                    .collect(Collectors.toList());
+
+            productSpecificationRepository.saveAll(productSpecifications);
+
+            List<ProductSpecificationDTO> specificationDTOs = productSpecifications.stream()
+                    .map(ProductSpecificationDTO::from)
+                    .collect(Collectors.toList());
+
+            return ProductDTO.fromEntity(savedProduct, specificationDTOs);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to read JSON file: " + filePath);
+        }
     }
 
 

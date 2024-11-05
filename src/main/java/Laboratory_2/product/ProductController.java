@@ -2,11 +2,15 @@ package Laboratory_2.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api/products")
 public class ProductController {
 
     @Autowired
@@ -43,5 +47,18 @@ public class ProductController {
         return ResponseEntity.ok(productService.deleteProduct(id));
     }
 
+    @PostMapping("/upload")
+    public ResponseEntity<ProductDTO> uploadProduct(@RequestParam("file") MultipartFile file) {
+        try {
+            File tempFile = File.createTempFile("product", ".json");
+            file.transferTo(tempFile);
 
+            ProductDTO productResponse = productService.saveProductFromJsonFile(tempFile.getAbsolutePath());
+
+            return ResponseEntity.ok(productResponse);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
