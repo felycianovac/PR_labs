@@ -2,19 +2,24 @@ package Laboratory_2.product_specification;
 
 import Laboratory_2.product.ProductEntity;
 import Laboratory_2.specification.Specification;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Table(name = "product_specification")
 public class ProductSpecification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonBackReference
     private ProductEntity product;
 
     @ManyToOne(fetch = FetchType.LAZY)
