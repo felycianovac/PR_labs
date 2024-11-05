@@ -2,6 +2,9 @@ package Laboratory_2.product_specification;
 
 import Laboratory_2.product.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,4 +15,10 @@ public interface ProductSpecificationRepository extends JpaRepository<ProductSpe
 
 
     List<ProductSpecification> findByProductId(Integer productId);
+
+    @Modifying
+    @Query("DELETE FROM ProductSpecification ps WHERE ps.product.id = :productId")
+    void deleteByProductId(@Param("productId") int productId);
+
+
 }
