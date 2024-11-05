@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement reading product &amp; saving from a json file">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketSessionManager.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement basic web socket config &amp; simple chat room logic">
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +19,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Dockerfile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -76,6 +70,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Laboratory_2.chat" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.Main">
@@ -167,7 +164,7 @@
       <workItem from="1730013851054" duration="223000" />
       <workItem from="1730232454547" duration="2275000" />
       <workItem from="1730663234379" duration="5350000" />
-      <workItem from="1730801875962" duration="9411000" />
+      <workItem from="1730801875962" duration="15373000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -281,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730809594430</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="implement basic web socket config &amp; simple chat room logic">
+      <option name="closed" value="true" />
+      <created>1730811808082</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1730811808082</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +318,7 @@
     <MESSAGE value="fix create product endpoint reponse" />
     <MESSAGE value="implement pagination + fix some http methods" />
     <MESSAGE value="implement reading product &amp; saving from a json file" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement reading product &amp; saving from a json file" />
+    <MESSAGE value="implement basic web socket config &amp; simple chat room logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement basic web socket config &amp; simple chat room logic" />
   </component>
 </project>
