@@ -7,8 +7,6 @@ import java.util.Optional;
 
 @Repository
 public interface SpecificationRepository extends JpaRepository<Specification, Integer> {
-
-
     Optional<Specification> findByType(String type);
 }
 

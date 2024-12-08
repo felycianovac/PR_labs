@@ -74,9 +74,6 @@ public class ProductService {
     }
 
 
-
-
-
     public ProductDTO getProductById(int id) {
         ProductEntity productEntity = productRepository.findById(id).orElse(null);
         if (productEntity == null) {

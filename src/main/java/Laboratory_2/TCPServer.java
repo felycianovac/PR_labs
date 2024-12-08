@@ -4,24 +4,60 @@ import java.io.*;
 import java.net.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Condition;
 
 public class TCPServer {
-    private static final int PORT = 12345;
+    private static final int PORT = 2121;
     private static final ReentrantLock lock = new ReentrantLock();
-    private static final Condition condition = lock.newCondition();
-    private static boolean writePending = false;
+    private static final Condition writesComplete = lock.newCondition();
+    private static final BlockingQueue<Command> readQueue = new LinkedBlockingQueue<>();
+    private static boolean processingWrites = true;
 
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server started on port: " + PORT);
+
+            new Thread(TCPServer::processReadCommands).start();
+
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 new ClientHandler(clientSocket).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void processReadCommands() {
+        while (true) {
+            try {
+                lock.lock();
+                try {
+                    while (processingWrites) {
+                        writesComplete.await();
+                    }
+                } finally {
+                    lock.unlock();
+                }
+
+                Command readCommand;
+                while ((readCommand = readQueue.poll()) != null) {
+                    readCommand.execute();
+                }
+
+                lock.lock();
+                try {
+                    processingWrites = true;
+                } finally {
+                    lock.unlock();
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -38,72 +74,94 @@ public class TCPServer {
                  PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
                 String command;
                 while ((command = in.readLine()) != null) {
-                    processCommand(command, out);
+                    if (command.startsWith("WRITE")) {
+                        processWriteCommand(command, out);
+                    } else if (command.equals("READ")) {
+                        enqueueReadCommand(command, out);
+                    } else if (command.equals("CLEAR")) {
+                        processWriteCommand(command, out);
+                    } else {
+                        out.println("Invalid command");
+                    }
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        private void processCommand(String command, PrintWriter out) {
+        private void processWriteCommand(String command, PrintWriter out) {
+            Command writeCommand = new Command(CommandType.WRITE, command, out);
+            writeCommand.execute();
+
             lock.lock();
             try {
-                sleepRandomly();
-
-                if (command.startsWith("WRITE")) {
-                    String data = command.substring(6);
-                    writeToFile(data);
-                    out.println("Data written: " + data);
-                } else if (command.equals("READ")) {
-                    while (writePending) {
-                        condition.await();
-                    }
-                    String data = readFromFile();
-                    out.println("Data read: " + data);
-                } else if (command.equals("CLEAR")) {
-                    clearFile();
-                    out.println("File cleared.");
-                } else if (command.equals("LIST")) {
-                    String data = readFromFile();
-                    out.println("File contents:\n" + data);
-                } else {
-                    out.println("Invalid command");
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                processingWrites = false;
+                writesComplete.signalAll();
             } finally {
                 lock.unlock();
             }
         }
 
-        private void writeToFile(String data) {
-            String timestamp = getCurrentTimestamp();
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("shared_data.txt", true))) {
-                writer.write(timestamp + " - " + data);
-                writer.newLine();
+        private void enqueueReadCommand(String command, PrintWriter out) {
+            Command readCommand = new Command(CommandType.READ, command, out);
+            readQueue.add(readCommand);
+        }
+    }
+
+    private static class Command {
+        private final CommandType type;
+        private final String command;
+        private final PrintWriter out;
+
+        public Command(CommandType type, String command, PrintWriter out) {
+            this.type = type;
+            this.command = command;
+            this.out = out;
+        }
+
+        public void execute() {
+            try {
+                sleepRandomly();
+
+                if (type == CommandType.WRITE) {
+                    if (command.startsWith("WRITE")) {
+                        writeToFile(command.substring(6));
+                        out.println("Data written: " + command.substring(6));
+                    } else if (command.equals("CLEAR")) {
+                        clearFile();
+                        out.println("File cleared.");
+                    }
+                } else if (type == CommandType.READ) {
+                    String data = readFromFile();
+                    out.println("Data read: " + data);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
 
-        private String readFromFile() {
+        private void writeToFile(String data) throws IOException {
+            String timestamp = getCurrentTimestamp();
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("shared_data.txt", true))) {
+                writer.write(timestamp + " - " + data);
+                writer.newLine();
+            }
+        }
+
+        private String readFromFile() throws IOException {
             StringBuilder data = new StringBuilder();
             try (BufferedReader reader = new BufferedReader(new FileReader("shared_data.txt"))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     data.append(line).append("\n");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
             return data.toString();
         }
 
-        private void clearFile() {
+        private void clearFile() throws IOException {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("shared_data.txt"))) {
                 writer.write("");
-            } catch (IOException e) {
-                e.printStackTrace();
             }
         }
 
@@ -115,10 +173,15 @@ public class TCPServer {
         private void sleepRandomly() {
             try {
                 int sleepTime = 1000 + (int) (Math.random() * 6000);
+                System.out.println("Sleeping for " + sleepTime + " milliseconds before executing command: " + command);
                 Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private enum CommandType {
+        WRITE, READ
     }
 }
