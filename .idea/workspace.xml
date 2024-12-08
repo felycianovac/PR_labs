@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement a simple TCP Server">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/MultiClientTest.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="update the lab to the latest state after presentation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketHandler.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +73,7 @@
       <recent name="D:\UTM\5_th_semester\pr\PR_labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -125,6 +117,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RaftNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Laboratory_3.RaftNode" />
+      <module name="PR_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Laboratory_3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RaftServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Laboratory_3.RaftServer" />
+      <module name="PR_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Laboratory_3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="PR_labs" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="Laboratory_2.Main" />
@@ -140,6 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RaftNode" />
+        <item itemvalue="Application.RaftServer" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Spring Boot.Main" />
       </list>
@@ -176,7 +196,7 @@
       <workItem from="1731012602931" duration="2213000" />
       <workItem from="1731058662637" duration="16966000" />
       <workItem from="1731236100138" duration="43000" />
-      <workItem from="1733678161055" duration="217000" />
+      <workItem from="1733678161055" duration="8863000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -314,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730822078995</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update the lab to the latest state after presentation">
+      <option name="closed" value="true" />
+      <created>1733679687076</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1733679687076</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +377,7 @@
     <MESSAGE value="implement basic web socket config &amp; simple chat room logic" />
     <MESSAGE value="dockerize database &amp; app" />
     <MESSAGE value="implement a simple TCP Server" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement a simple TCP Server" />
+    <MESSAGE value="update the lab to the latest state after presentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="update the lab to the latest state after presentation" />
   </component>
 </project>
