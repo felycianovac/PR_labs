@@ -38,6 +38,7 @@ public class ProductParser {
         if(oldPrice.equals("0 lei"))
             oldPrice = newPrice;
 //        System.out.println(oldPrice + " old");
+//        System.out.println("Product: " + title + " " + productLink + " " + oldPrice + " " + newPrice);
         return new Product(title, productLink, oldPrice, newPrice, fetchAdditionalProductData(productLink));
     }
 
@@ -85,10 +86,10 @@ public class ProductParser {
 
     public List<Product> parseProductsFromPage(String pageContent) throws Exception {
         Document doc = Jsoup.parse(pageContent);
-        Elements productElements = doc.select(".product-card.bg-color-1c.br-20.position-relative.overflow-hidden.h-100.product-item");
+//        System.out.println("Document: " + doc.toString());
+        Elements productElements = doc.select(".product-card.bg-color-1c.br-20.position-relative.h-100.product-item");
 
-//        System.out.println("Product elements: ");
-//        System.out.println(productElements.toString());
+
         return productElements.stream()
                 .map(this::parseProductDetails)
                 .collect(Collectors.toList());

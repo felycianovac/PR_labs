@@ -48,6 +48,7 @@ public class ProductService {
     public List<Product> scrapeAndDisplay(String pageContent) {
         if (pageContent != null) {
             try {
+//                System.out.println(pageContent);
                 List<Product> productList =productParser.parseProductsFromPage(pageContent);
                 productList.forEach(System.out::println);
                 productList.forEach(product -> {

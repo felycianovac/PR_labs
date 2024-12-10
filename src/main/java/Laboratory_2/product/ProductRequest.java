@@ -2,7 +2,9 @@ package Laboratory_2.product;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.Map;
 
@@ -10,8 +12,6 @@ import java.util.Map;
 @Getter
 @Setter
 @Data
-@Builder
-
 @NoArgsConstructor
 public class ProductRequest {
     private String title;
@@ -19,22 +19,6 @@ public class ProductRequest {
     private String oldPrice;
     private String newPrice;
     private Map<String, String> specifications;
-
-//    public static ProductDTO fromEntity(ProductEntity productEntity) {
-//        Map<String, String> specifications = productEntity.getProductSpecifications().stream()
-//                .collect(Collectors.toMap(
-//                        spec -> spec.getSpecification().getType(),
-//                        ProductSpecification::getValue
-//                ));
-//
-//        return ProductDTO.builder()
-//                .title(productEntity.getTitle())
-//                .link(productEntity.getLink())
-//                .oldPrice(productEntity.getOldPrice())
-//                .newPrice(productEntity.getNewPrice())
-//                .specifications(specifications)
-//                .build();
-//    }
 
 
     @JsonCreator
@@ -50,4 +34,6 @@ public class ProductRequest {
         this.newPrice = newPrice;
         this.specifications = specifications;
     }
+
+
 }

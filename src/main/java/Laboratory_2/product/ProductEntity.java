@@ -23,7 +23,7 @@ public class ProductEntity {
     private int id;
     @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "link", nullable = false, unique = true)
+    @Column(name = "link", nullable = false)
     private String link;
     @Column(name = "old_price")
     private String oldPrice;

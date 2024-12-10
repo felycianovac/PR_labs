@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="simulate Leader Election process with failures, running in threads">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Config/RabbitMQConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Config/RestConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="integrate rabbitmq &amp; implement publisher and customer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftSimulation/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftSimulation/RaftNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -227,7 +217,8 @@
       <workItem from="1731058662637" duration="16966000" />
       <workItem from="1731236100138" duration="43000" />
       <workItem from="1733678161055" duration="17567000" />
-      <workItem from="1733769878258" duration="18279000" />
+      <workItem from="1733769878258" duration="18566000" />
+      <workItem from="1733830654010" duration="4504000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -381,7 +372,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733690957400</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="integrate rabbitmq &amp; implement publisher and customer">
+      <option name="closed" value="true" />
+      <created>1733790273470</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1733790273470</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +428,7 @@
     <MESSAGE value="implement a simple TCP Server" />
     <MESSAGE value="update the lab to the latest state after presentation" />
     <MESSAGE value="simulate Leader Election process with failures, running in threads" />
-    <option name="LAST_COMMIT_MESSAGE" value="simulate Leader Election process with failures, running in threads" />
+    <MESSAGE value="integrate rabbitmq &amp; implement publisher and customer" />
+    <option name="LAST_COMMIT_MESSAGE" value="integrate rabbitmq &amp; implement publisher and customer" />
   </component>
 </project>

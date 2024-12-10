@@ -1,4 +1,6 @@
 package Laboratory_3.rabbitMQ;
+import Laboratory_2.product.ProductRequest;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
@@ -21,38 +23,53 @@ public class RabbitMQConsumer{
     private void consume(String message) {
         String cleanedMessage = message.replace("\\", "");
         sendToServer(cleanedMessage);
-        if (cleanedMessage.startsWith("\"") && cleanedMessage.endsWith("\"")) {
-            cleanedMessage = cleanedMessage.substring(1, cleanedMessage.length() - 1);  // Remove first and last quotes
+        if(cleanedMessage.startsWith("\"")){
+            cleanedMessage = cleanedMessage.substring(1);
+        }
+        if(cleanedMessage.endsWith("\"")){
+            cleanedMessage = cleanedMessage.substring(0, cleanedMessage.length() - 1);
         }
 
-        System.out.println("Received message: " + cleanedMessage);
         sendToServer(cleanedMessage);
     }
 
     private void sendToServer(String jsonMessage) {
         try {
-            URL url = new URL(SERVER_URL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json");
+            if(jsonMessage.startsWith("\"")){
+                jsonMessage = jsonMessage.substring(1);
+            }else if(jsonMessage.endsWith("\"")){
+                jsonMessage = jsonMessage.substring(0, jsonMessage.length() - 1);
+            }else {
+                System.out.println("Sending JSON Message: " + jsonMessage);
 
-            String jsonInputString = jsonMessage.toString();
+                URL url = new URL(SERVER_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Content-Type", "application/json");
+                connection.setRequestProperty("Accept", "*/*");
+                connection.setRequestProperty("Connection", "keep-alive");
+                connection.setRequestProperty("User-Agent", "PostmanRuntime/7.43.0");
+                connection.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
 
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
+                try (OutputStream os = connection.getOutputStream()) {
+                    os.write(jsonMessage.getBytes("UTF-8"));
+                }
 
-            int responseCode = connection.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_CREATED) {
-                System.out.println("Data sent to server successfully.");
-            } else {
-                System.out.println("Error sending data to server. Response code: " + responseCode);
+                int responseCode = connection.getResponseCode();
+//                System.out.println("Response Code: " + responseCode);
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    System.out.println("Data sent successfully.");
+                } else {
+                    System.out.println("Failed to send data. Response Code: " + responseCode);
+                }
             }
         } catch (Exception e) {
-            System.err.println("Error sending POST request: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
+
 }
