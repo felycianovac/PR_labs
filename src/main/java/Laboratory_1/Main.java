@@ -56,8 +56,8 @@ public class Main {
 //            System.out.println("No products found or scraping failed.");
 //        }
 //
-        String serializedProducts = serialize(products);
-        System.out.println(serializedProducts);
+//        String serializedProducts = serialize(products);
+//        System.out.println(serializedProducts);
 //        System.out.println(deserialize(serializedProducts));
     }
 

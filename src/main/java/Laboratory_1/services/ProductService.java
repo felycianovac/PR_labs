@@ -4,6 +4,16 @@ import Laboratory_1.model.ProcessedProductData;
 import Laboratory_1.model.Product;
 import Laboratory_1.parsers.ProductParser;
 import Laboratory_1.utils.WebFetcher;
+import Laboratory_3.rabbitMQ.RabbitMQPublisher;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
@@ -15,11 +25,13 @@ import static Laboratory_1.utils.WebFetcher.fetchPageContent;
 
 public class ProductService {
 
+
     private ProductParser productParser;
 
 
     public ProductService() {
         this.productParser = new ProductParser();
+
     }
 
     public List<Product> scrapeProducts(String url) {
@@ -32,11 +44,19 @@ public class ProductService {
         return scrapeAndDisplay(pageContent);
     }
 
+
     public List<Product> scrapeAndDisplay(String pageContent) {
         if (pageContent != null) {
             try {
                 List<Product> productList =productParser.parseProductsFromPage(pageContent);
                 productList.forEach(System.out::println);
+                productList.forEach(product -> {
+                    try {
+                        sendHttpRequestToRabbitController(product.toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
                 return productList;
 
             } catch (Exception e) {
@@ -45,6 +65,37 @@ public class ProductService {
         }
         return null;
     }
+
+
+    private void sendHttpRequestToRabbitController(String productMessage) throws Exception {
+        String apiUrl = "http://localhost:8080/api/rabbit/send";
+
+        URL url = new URL(apiUrl);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("POST");
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Content-Type", "application/json");
+
+        String jsonInputString = "{\"message\":"  + productMessage + "}";
+        System.out.println(jsonInputString);
+
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
+        }
+
+
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            System.out.println("Message sent to RabbitMQ successfully for: " + productMessage);
+        } else {
+            System.out.println("Failed to send message for: " + productMessage + " with response code: " + responseCode);
+        }
+
+        connection.disconnect();
+    }
+
 
     public ProcessedProductData processProducts(String url, double minPriceEUR, double maxPriceEUR) {
         String pageContent = WebFetcher.fetchPageContent(url);

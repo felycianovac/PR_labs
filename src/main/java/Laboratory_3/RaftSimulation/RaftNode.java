@@ -1,4 +1,4 @@
-package Laboratory_3;
+package Laboratory_3.RaftSimulation;
 
 import java.net.*;
 import java.io.*;
