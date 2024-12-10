@@ -10,8 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @ComponentScan(basePackages = "Laboratory_3")
 @ComponentScan(basePackages = "Laboratory_2")
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -19,4 +17,4 @@ public class Main {
     }
 
 
-    }
+}

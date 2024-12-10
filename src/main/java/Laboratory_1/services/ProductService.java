@@ -1,22 +1,15 @@
 package Laboratory_1.services;
 
-import Laboratory_1.model.ProcessedProductData;
 import Laboratory_1.model.Product;
 import Laboratory_1.parsers.ProductParser;
 import Laboratory_1.utils.WebFetcher;
-import Laboratory_3.rabbitMQ.RabbitMQPublisher;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import Laboratory_3.Utils.FileUtils;
 
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static Laboratory_1.parsers.ExchangeRateParser.getEurToMdlRate;
@@ -98,7 +91,7 @@ public class ProductService {
     }
 
 
-    public ProcessedProductData processProducts(String url, double minPriceEUR, double maxPriceEUR) {
+    public List<Product> processProducts(String url, double minPriceEUR, double maxPriceEUR) {
         String pageContent = WebFetcher.fetchPageContent(url);
 
         if (pageContent != null) {
@@ -122,20 +115,29 @@ public class ProductService {
                             return priceEUR >= minPriceEUR && priceEUR <= maxPriceEUR;
                         })
                         .collect(Collectors.toList());
+                int productId = 0;
+                for(Product product : filteredProducts) {
+                    FileUtils.saveProcessedProductToFile(product.toString(), productId++);
+                }
+                return filteredProducts;
 
-                Optional<Double> totalSum = filteredProducts.stream()
-                        .map(product -> Double.parseDouble((product.getNewPrice() != null && !product.getNewPrice().isEmpty() ? product.getNewPrice() : product.getOldPrice())
-                                        .replaceAll("[^\\d.]", "")))
-                        .reduce(Double::sum);
 
-                return new ProcessedProductData(filteredProducts, totalSum.orElse(0.0)+" EUR", Instant.now());
+
+//                Optional<Double> totalSum = filteredProducts.stream()
+//                        .map(product -> Double.parseDouble((product.getNewPrice() != null && !product.getNewPrice().isEmpty() ? product.getNewPrice() : product.getOldPrice())
+//                                        .replaceAll("[^\\d.]", "")))
+//                        .reduce(Double::sum);
+
+//                return new ProcessedProductData(filteredProducts, totalSum.orElse(0.0)+" EUR", Instant.now());
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return new ProcessedProductData(null, "0.0 EUR", Instant.now());
+        return null;
+
+//        return new ProcessedProductData(null, "0.0 EUR", Instant.now());
     }
 
     private Product convertPriceToEUR(Product product, double mdlToEurRate, double eurToMdlRate) {
@@ -163,4 +165,7 @@ public class ProductService {
 
         return product;
     }
+
+
+
 }

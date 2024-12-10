@@ -29,7 +29,6 @@ public class RabbitMQPublisher {
 
     public void sendMessage(String message) {
         rabbitTemplate.execute(channel -> {
-            // Declare the exchange dynamically (topic exchange)
             channel.exchangeDeclare(exchange, "topic", true, false, null);
             return null;
             });

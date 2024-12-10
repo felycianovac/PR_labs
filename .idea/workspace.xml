@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="integrate rabbitmq &amp; implement publisher and customer">
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="fix darwin changes &amp; data being posted on server">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/FTP/FTPFetcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Utils/FileUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +81,7 @@
       <recent name="D:\UTM\5_th_semester\pr\PR_labs" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.FTPFetcher">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -109,6 +112,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FTPFetcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Laboratory_3.FTP.FTPFetcher" />
+      <module name="PR_labs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Laboratory_3.FTP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Laboratory_1.Main" />
       <module name="PR_labs" />
@@ -124,19 +140,6 @@
     </configuration>
     <configuration name="RaftNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Laboratory_3.RaftSimulation.RaftNode" />
-      <module name="PR_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Laboratory_3.Config.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RaftServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Laboratory_3.RaftServer" />
       <module name="PR_labs" />
       <extension name="coverage">
         <pattern>
@@ -177,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.FTPFetcher" />
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Application.RaftNode" />
-        <item itemvalue="Application.RaftServer" />
       </list>
     </recent_temporary>
   </component>
@@ -218,7 +221,7 @@
       <workItem from="1731236100138" duration="43000" />
       <workItem from="1733678161055" duration="17567000" />
       <workItem from="1733769878258" duration="18566000" />
-      <workItem from="1733830654010" duration="4504000" />
+      <workItem from="1733830654010" duration="14643000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -380,7 +383,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733790273470</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix darwin changes &amp; data being posted on server">
+      <option name="closed" value="true" />
+      <created>1733835196917</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1733835196918</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -429,6 +440,7 @@
     <MESSAGE value="update the lab to the latest state after presentation" />
     <MESSAGE value="simulate Leader Election process with failures, running in threads" />
     <MESSAGE value="integrate rabbitmq &amp; implement publisher and customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="integrate rabbitmq &amp; implement publisher and customer" />
+    <MESSAGE value="fix darwin changes &amp; data being posted on server" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix darwin changes &amp; data being posted on server" />
   </component>
 </project>

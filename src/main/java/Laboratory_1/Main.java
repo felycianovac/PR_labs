@@ -23,7 +23,15 @@ public class Main {
         String url = "https://darwin.md/telefoane/smartphone";
         //task 6
         ProductService productService = new ProductService();
-        System.out.println(productService.scrapeProducts(url));
+//        System.out.println(productService.scrapeProducts(url));
+//
+//        List<Product> products = productService.scrapeProducts("darwin.md", "/telefoane/smartphone");
+
+
+        //task 7
+        System.out.println(productService.processProducts(url, 100, 1000));
+
+
 
 //        ProcessedProductData processedProductData = productService.processProducts(url, 100, 1000);
 //        System.out.println(processedProductData);
@@ -35,7 +43,6 @@ public class Main {
         ManualProductSerializer manualProductSerializer = new ManualProductSerializer();
 //        ManualProcessedProductSerializer manualProcessedProductSerializer = new ManualProcessedProductSerializer();
 
-        List<Product> products = productService.scrapeProducts("darwin.md", "/telefoane/smartphone");
 //
 //        if (products != null && !products.isEmpty()) {
 //            System.out.println("=== Serialized Product List (Before Processing) ===");
