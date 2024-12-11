@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  intermediary-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: intermediary-server
+    ports:
+      - "8080:8080"
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    name: shared_network
+    external: true

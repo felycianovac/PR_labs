@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  web-server-1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-server-1
+    environment:
+      SERVER_PORT: 8000
+      RAFT_UDP_PORT: 3000
+    ports:
+      - "8000:8000"
+      - "3000:3000/udp"
+    networks:
+      - shared_network
+
+  web-server-2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-server-2
+    environment:
+      SERVER_PORT: 8001
+      RAFT_UDP_PORT: 3001
+    ports:
+      - "8001:8001"
+      - "3001:3001/udp"
+    networks:
+      - shared_network
+
+  web-server-3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web-server-3
+    environment:
+      SERVER_PORT: 8002
+      RAFT_UDP_PORT: 3002
+    ports:
+      - "8002:8002"
+      - "3002:3002/udp"
+    networks:
+      - shared_network
+
+networks:
+  shared_network:
+    name: shared_network
+    external: true

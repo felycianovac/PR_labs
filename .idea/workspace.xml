@@ -4,16 +4,73 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="fix darwin changes &amp; data being posted on server">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/FTP/FTPFetcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Utils/FileUtils.java" afterDir="false" />
+    <list default="true" id="a4c820e9-cdd4-4318-89df-4f9eab2bcd4f" name="Changes" comment="implement file uploading on ftp &amp; file retrieving+POST to server">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PR_labs.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database_ftp/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Laboratory_1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/PR_labs (1).iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/app/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/PR_labs (2).iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/PR_labs (3).iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/Config/AppConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/RaftSimulation/LeaderController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/app/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/ProcessedProductData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/model/ProcessedProductData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ExchangeRateParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/parsers/ExchangeRateParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/parsers/ProductParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/parsers/ProductParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/CustomSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/serialization/CustomSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/ManualProcessedProductSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/serialization/ManualProcessedProductSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/serialization/ManualProductSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/serialization/ManualProductSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/TCPSocketHTTPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/utils/TCPSocketHTTPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/ValidationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/utils/ValidationUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_1/utils/WebFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/utils/WebFetcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/MultiClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/MultiClientTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/TCPClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/TCPServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/TCPServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/chat/ChatRoomHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/chat/ChatRoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/chat/ChatRoomService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product_specification/ProductSpecification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product_specification/ProductSpecificationDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/product_specification/ProductSpecificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/product_specification/ProductSpecificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/Specification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/specification/Specification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/specification/SpecificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/specification/SpecificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/websocket/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_2/websocket/WebSocketSessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/websocket/WebSocketSessionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/Config/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/Config/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/Config/RestConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/Config/RestConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/FTP/FTPFetcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/FTP/FTPFetcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftSimulation/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/RaftSimulation/RaftNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_2/src/main/java/raft/RaftNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/Utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_1/src/main/java/utils/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/rabbitMQ/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/rabbitMQ/RabbitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/rabbitMQ/RabbitMQConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Laboratory_3/rabbitMQ/RabbitMQPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Laboratory_3/src/main/java/rabbitMQ/RabbitMQPublisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,14 +118,18 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/UTM/5_th_semester/pr/PR_labs&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;21&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/UTM/5_th_semester/pr/PR_labs/src/main/java/Laboratory_1/src/main/resources&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;91f3649d2cee316511abc2bbdcc5242f&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d5cae9e8ac888a068b9b20eee9a19131&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -77,11 +138,27 @@
       <recent name="Laboratory_3.rabbitMQ" />
       <recent name="Laboratory_2.chat" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_1\src\main\resources" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_2\src\main\resources" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\UTM\5_th_semester\pr\PR_labs" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_2\src\main\resources" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_2\src\main\java" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_3\src\main\resources" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_3" />
+      <recent name="D:\UTM\5_th_semester\pr\PR_labs\src\main\java\Laboratory_2" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="src.main.java.raft" />
+      <recent name="utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FTPFetcher">
+  <component name="RunManager" selected="Application.app.Main">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -112,25 +189,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FTPFetcher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Laboratory_3.FTP.FTPFetcher" />
-      <module name="PR_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Laboratory_3.FTP.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Laboratory_1.Main" />
-      <module name="PR_labs" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="PR_labs (1)" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Laboratory_1.utils.*" />
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -138,25 +202,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RaftNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Laboratory_3.RaftSimulation.RaftNode" />
-      <module name="PR_labs" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Laboratory_3.Config.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration name="Main (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PR_labs (2)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="main.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PR_labs (3)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Main" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="PR_labs" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="Laboratory_2.Main" />
+      <module name="PR_labs (3)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="src.main.java.Main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Laboratory_2.*" />
+          <option name="PATTERN" value="src.main.java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,11 +229,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
-      <deployment type="dockerfile">
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="PR_labs (2)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="app.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="PR_labs (2)" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="src.main.java.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.main.java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Laboratory_2.database: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="Dockerfile" />
+          <option name="services">
+            <list>
+              <option value="database" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/main/java/Laboratory_2/docker-compose.yml" />
         </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="Laboratory_2.ftp_server: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="services">
+            <list>
+              <option value="ftp_server" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="src/main/java/Laboratory_2/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
       </deployment>
       <method v="2" />
     </configuration>
@@ -178,13 +287,21 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="database_ftp: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="database_ftp/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.FTPFetcher" />
-        <item itemvalue="Spring Boot.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Docker.Dockerfile" />
-        <item itemvalue="Application.RaftNode" />
+        <item itemvalue="Application.app.Main" />
+        <item itemvalue="Docker.database_ftp: Compose Deployment" />
+        <item itemvalue="Spring Boot.Main (2)" />
+        <item itemvalue="Spring Boot.Main (3)" />
+        <item itemvalue="Docker.Laboratory_2.database: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -222,6 +339,11 @@
       <workItem from="1733678161055" duration="17567000" />
       <workItem from="1733769878258" duration="18566000" />
       <workItem from="1733830654010" duration="14643000" />
+      <workItem from="1733863750504" duration="178000" />
+      <workItem from="1733863940788" duration="119000" />
+      <workItem from="1733864080497" duration="3325000" />
+      <workItem from="1733868324551" duration="1452000" />
+      <workItem from="1733915668113" duration="20399000" />
     </task>
     <task id="LOCAL-00001" summary="implement the base get request">
       <option name="closed" value="true" />
@@ -396,6 +518,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-websocket" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+    <option featureType="dependencySupport" implementationName="java:org.projectlombok:lombok" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
