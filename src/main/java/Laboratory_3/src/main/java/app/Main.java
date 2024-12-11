@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import FTP.FTPFetcher;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"FTP", "rabbitMQ", "RaftSimulation", "Config"})
+@ComponentScan(basePackages = {"FTP", "rabbitMQ", "RaftSimulation", "Config", "SMTP"})
 public class Main {
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(Main.class, args);
